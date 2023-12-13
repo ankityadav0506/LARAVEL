@@ -1,0 +1,2290 @@
+
+
+cd Desktop/ //change dir to desktop
+touch index.html //create a file on desktop
+firefox index.html //run the file
+composer require barryvdh/laravel-debugbar
+
+
+“CREATE LARAVEL PROJECT”
+1.	cd /var/www/
+2.	ls -la
+3.	composer create-project --prefer-dist laravel/laravel <project-name>
+4.	OR
+5.	composer create-project --prefer-dist laravel/laravel my_project      “ “sudo chmod 777 /var/www” (optional if permission denied) ”
+6.	cd my_project/
+7.	php artisan serve
+8.	THAT’S IT
+
+“CREATE PHP FILE & RUN IT”
+1.	cd /var/www/html
+2.	Create a folder eg:- php_projects
+3.	Cd cd /var/www/html/php_projects
+4.	code .
+5.	create a file “index.php” & type php code & save it
+6.	open http://localhost/php_projects/index.php
+7.	THAT’S IT
+
+
+“OPEN LARAVEL PROJECT IN VS CODE”
+1.	cd Desktop/
+2.	cd laravel/
+3.	li
+4.	cd app1/ “app1” is your project folder
+5.	Li
+6.	php artisan serve //to start the server
+7.	Add another terminal from “+”
+8.	“In second terminal”, type -> code .
+9.	“Your app folder will open in VS CODE”
+
+
+“PHPMYADMIN INSTALL”
+sudo apt update
+sudo apt upgrade
+
+1. Install Apache by running the following command:
+
+sudo apt install apache2
+
+2. Install MySQL by running the following command:
+sudo apt install mysql-server
+
+3. Install PHP and the necessary modules by running the following command:
+sudo apt install php libapache2-mod-php php-mysql
+
+sudo service apache2 restart
+
+4.To install phpMyAdmin on Ubuntu 22, you can follow these steps:
+sudo apt install phpmyadmin
+
+CREATE USER 'ankit'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pass';
+GRANT ALL PRIVILEGES ON *.* TO 'ankit'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
+
+sudo service apache2 restart
+
+“LARAVEL INSTALL Linux”-->
+1.	php should be installed, php –version
+2.	php -m, installed the missing extensions below, only if missing
+3.	sudo apt install php8.1-bcmath /ctype/dom/fileinfo/json/mbstring/openssl/pcre/pdo
+install / one’s line by line , not necessary
+4.	Now install composer
+5.	php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+6.	sudo mv composer.phar /usr/local/bin/composer
+7.	composer  //verfy composer instalation
+8.	Installing Laravel-->
+9.	cd to your desired installing folder
+10.	composer create-project laravel/laravel example-app
+11.	If you get any error,
+12.	sudo apt install php8.1-curl
+13.	sudo apt install php8.1-gd
+14.	sudo apt install php8.1-dom
+15.	composer create-project laravel/laravel mylaravel-app
+16.	cd mylaravel-app
+17.	php artisan serve
+
+
+
+“Recommended Sites”-->
+https://www.honeybadger.io/
+
+“Redis Install”-->
+1.	sudo apt install redis-server
+2.	
+
+“VIRTUAL HOST”-->
+Virtual hosting is a method for hosting multiple domain names (with separate handling of each name) on a single server (or pool of servers). This allows one server to share its resources, such as memory and processor cycles, without requiring all services provided to use the same host name. The term virtual hosting is usually used in reference to web servers but the principles do carry over to other Internet services.
+sudo systemctl status apache2		//check status
+sudo service apache2 restart			//restart apache
+sudo chown -R $USER:$USER /var/www/mysite		//grant writable access to folder
+sudo chmod -R 755 var/www/mysite				//allow to write through appp also
+
+Give permissions first
+	cd /var/www/my_project
+	sudo chmod -R 777  storage/logs/
+	sudo chmod -R 777  storage/
+	sudo chmod -R 777  public/
+
+1.	cd /etc/apache2/sites-available
+2.	sudo cp 000-default.conf my_project.com.conf	//copy file with new name
+3.	sudo gedit my_project.com.conf
+4.	In the file,
+<VirtualHost *:80>
+  	ServerAdmin admin@test.com
+ 	DocumentRoot /var/www/my_project/public
+  	ServerName local.testing
+  	DirectoryIndex index.php
+  <Directory /var/www/my_project/public/>
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride All
+    Require all granted
+  </Directory>
+  ErrorLog /var/www/my_project/error_log.log
+  CustomLog /var/www/my_project/access.log combined
+</VirtualHost>
+	Save & Close
+5.	sudo a2ensite my_project.com.conf		//enables site
+6.	systemctl reload apache2
+7.	cd /etc					//add the created virtual domain in the apache host file
+8.	sudo gedit hosts
+In file,
+127.0.0.2	www.my_project.com
+9.	Goto http://www.my_project.com/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Laravel→
+Laravel is an open-source PHP framework, which is robust and easy to understand. It follows a model-view-controller design pattern. Laravel reuses the existing components of different frameworks which helps in creating a web application. The web application thus designed is more structured and pragmatic.
+
+Advantages of Laravel→
+The web application becomes more scalable.
+Time is saved in designing the web application, since Laravel reuses the components from other framework in developing web application.
+It includes namespaces and interfaces, thus helps to organize and manage resources.
+
+Namespaces→
+1.	They allow for better organization by grouping classes that work together to perform a task
+2.	They allow the same name to be used for more than one class
+Interfaces→
+•	An interface is similar to a class except that it cannot contain code.
+•	An interface can define method names and arguments, but not the contents of the methods.
+•	Any classes implementing an interface must implement all methods defined by the interface.
+Composer->
+Composer is a tool which includes all the dependencies and libraries. It allows a user to create a project with respect to the mentioned framework (for example, those used in Laravel installation). Third party libraries can be installed easily with help of composer.
+
+Artisan->
+Command line interface used in Laravel is called Artisan. It includes a set of commands which assists in building a web application. These commands are incorporated from Symphony framework, resulting in add-on features in Laravel 5.1 (latest version of Laravel).
+
+
+
+
+ROUTE→
+Routing in Laravel allows you to route all your application requests to their appropriate controller.
+Routes are actually the web URLs that you can visit in your web application. For example /home, /profile, /dashboard etc are all different routes that one can create in a Laravel Application. Keep in mind that, routes are case sensitive thus /profile is different than /Profile.
+
+Types of routes ->
+Get, post , put, patch, delete, options, any, match 
+
+1.	First Route
+Route::get('/demo', function(){
+echo "Hello from Route";
+});
+
+Goto http://127.0.0.1:8000/demo
+
+
+2.	Route with value given at URL
+Route::get('/demo/{name}', function($name){
+echo "Hello from demo <br/>";
+echo "<br/> The value from url is : <h3>".$name. "</h3>";
+});
+Goto  http://127.0.0.1:8000/demo/Hello
+
+
+3.	To get value from Route and use in another page
+Create this route in Route/web.php
+Route::get('/demo/{name}', function($name){
+$data = compact('name');
+return view('welcome')->with($data);
+});
+Goto http://127.0.0.1:8000/demo/Hello
+
+Add this code in resources/views/welcome.blade.php
+<h2>{{ $name }}</h2>
+
+
+
+Optional Parameter->
+Route :: get ('emp/{desig?}', function ($desig = null) {
+    echo $desig;
+});
+
+<*/ ROUTE ENDS /*>
+
+
+
+
+Middleware→
+It is a convenient mechanism for inspecting and filtering HTTP requests entering your application.
+It filters the requests, which one to execute & which to block
+ 
+Middleware is another essential component of Laravel and provides the method to filter HTTP requests that get entered into your project. Let us assume a situation where this middleware of Laravel checks for an authenticated user of your software or project.
+
+Types of Middleware->
+1.	Global Middleware
+Global middlewares are those that will be running during every HTTP request of your application.
+2.	Route Middleware
+This middleware for specific routes, you must add the middleware with a key for your app/Http/Kernel.php file, which is called route middleware.
+
+“Creating a Global middleware”->
+php artisan make:middleware CheckUserAge
+//creates a middleware named “CheckUser” at app/Http/Middleware/CheckUser.
+
+Before using any middleware, you have to register it.
+Goto - app\Http\Kernel.php
+
+1.	To register the global middleware, list the class at the end of $middleware property.
+protected $middleware = [
+ \App\Http\Middleware\CheckUserAge::class
+];
+2.	php artisan config:cache //resets the configurations
+
+3.	Goto app/http/middleware/CheckUserAge.php
+Add this code to give middleware condition
+public function handle(Request $request, Closure $next): Response
+   {  
+       echo "hello from middleware";
+       if($request->age<18){
+           echo "You are <b>not allowed</b> to acess the page";
+           die;
+       }
+       return $next($request);
+   }
+
+
+
+Creating a Route middleware”->
+1.	php artisan make:middleware LoginStatusChecker
+//creates a middleware named “LoginStatusChecker” at app/Http/Middleware/CheckUser.
+
+2.	Add this route in web.php
+Route::get('/no_access', function(){
+   echo "Please Login to Continue";
+   die;
+});
+
+3.	Goto kernel/php
+Search for 
+protected $middlewareAliases = [];
+
+Add this key in it
+'loginchecker' => \App\Http\Middleware\LoginStatusChecker::class
+
+4.	php artisan config:cache
+
+5.	Goto route, which you want to make it route specific middleware
+
+
+
+
+
+
+MIGRATION→
+Migrations are like version control for your database, allows to define, manipulate and share the application's database schema definition.
+
+“Creating Database Connection in Laravel / Setting up Migration”
+
+1.	Create a database through “phpmyadmin”, any like “test”
+2.	Goto “.env” file in your laravel project folder
+Add this changes to code
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=test
+DB_USERNAME=root
+DB_PASSWORD=
+Note: enter the correct username and password if access is denied
+
+3.	Run this command in new terminal
+“php artisan config:Cache”
+It reconfigures cache to speedily run the server
+ 
+4.	“php artisan migrate” //run this command
+It publishes all our schema to the database. This command also creates the table in the database. php artisan migrate:status checks the status of the migration. migrate:status checks the migrations we have run.
+
+5.	Goto “test’ DB in “phpmyadmin” & check some tables are being created
+
+“Creating Tables using migration”
+
+1.	php artisan make:migration create_customers_table
+It creates a php file in database/migrations
+
+2.	Goto database/migrations/create_customers_table.php
+Navigate to schema and create your custom table columns
+
+Schema::create('customers', function (Blueprint $table) {
+           $table->id('customer_id');
+           $table->string('name', 60);
+           $table->string('email', 100);
+           $table->enum('gender', ["M","F","O"]); //restricts to only enter desired value
+           $table->text('address');
+           $table->date('dob')->nullable();        //can be empty
+           $table->string('password');
+           $table->integer('points')->default(0);  //default value will be 0
+       });
+ 
+3.	php artisan migrate //migrates the current entered schema data into “test” database 
+4.	php artisan migrate:rollback (OPTIONAL)//rollback last migration
+5.	php artisan migrate:refresh (OPTIONAL)//remigrates all the tables as fresh, if there is an error.
+
+6.	php artisan make:migration add_columns_to_customers_table (OPTIONAL)
+Here “add_columns_to” is default syntax 
+It will create a file in database/migrations/add_columns_to_customers_table.php
+
+Goto database/migrations/add_columns_to_customers_table.php
+Navigate to schema in up() and add your new columns
+Schema::table('customers', function (Blueprint $table) {
+           $table->string('country', 50)->after('address');
+           $table->string('state', 50)->after('address');
+       });
+Here “->after(‘address’);”   is used to add the new columns to table after the “address columns”
+
+7.	php artisan migrate //to make new migrations or update the database
+
+
+Migration Commands->
+php artisan migrate
+php artisan migrate:status
+
+php artisan migrate –pretend //to view the sql stmts which will be executed during migration, BUT It does not execute the migration command
+
+php artisan migrate:rollback
+php artisan migrate:rollback –step=5 //rollback last five migrations
+
+php artisan migrate –force //forcefully execute the command
+php artisan migrate:reset //roll back all of your application's migrations
+php artisan migrate:refresh //roll back all of your migrations and then execute the migrate command
+
+php artisan migrate –fresh //drop all tables from the database and then execute the migrate command:
+
+
+
+“DB Query in Laravel”-->
+1.	Create a Controller & Route, goto controller\
+2.	use Illuminate\Support\Facades\DB;
+A facade is a class wrapping a complex library to provide a simpler and more readable interface to it.
+3.	Add the DB code in a function
+INSERT
+$data = array(
+'name'=>$request->name,
+'email'=>$request->email
+);
+$result = DB::table('students')->insert($data);
+
+
+READ
+$customers = DB::table('customers')->get();
+return view('customer-view', ['customers'=>$customers]);
+
+$customers = DB::table('customers')->where('id',3)->get();
+$customers = DB::table('customers')->where('id',3)->orWhere('name','abc')->get();
+
+$customers = DB::table('customers')->whereBetween('id',[2,3])->get();
+$customers = DB::table('customers')->whereNotBetween('id',[2,3])->get();
+$customers = DB::table('customers')->whereIn('id',[1,3,5])->get();	//gives data of 1,3,5 only
+
+
+
+//nested where
+$customers = DB::table('customers')->where('name',’ankit’)
+->orWhere(function ($query) {
+	$query->where(‘name’, ‘test’)
+		 ->where(‘id’, ‘<’, 2);
+})->get();
+
+	
+$customers = DB::table('customers')->whereDate('2020-11-25')->get();
+
+$customers = DB::table('customers')->where('id',3)->first();
+OR
+$customers = DB::table('customers')->find(3);
+
+$customers = DB::table('customers')->where('id',3)->value('email'); //gives only email value, matched with id
+$customers = DB::table('customers')->pluck('email'); //gives all email column value in array
+$id = $request->id;
+$data = array('name'=>$request->name)
+$customers = DB::table('customers')->find(3);
+
+
+OTHERS-->
+$song = Singer::has('songs')->get(); //retrieves only singers who had songs in 'songs' table
+
+// Retrieve all posts that have three or more comments...
+$posts = Post::has('comments', '>=', 3)->get();
+
+// Retrieve posts that have at least one comment, that has atleast one image “.” is for nesting
+$posts = Post::has('comments.images')->get();
+
+
+
+// Retrieve posts with at least one comment containing words like code%...
+$posts = Post::whereHas('comments', function (Builder $query) {
+$query->where('content', 'like', 'code%');
+})->get();
+
+// Retrieve posts with at least ten comments containing words like code%...
+$posts = Post::whereHas('comments', function (Builder $query) {
+$query->where('content', 'like', 'code%');
+}, '>=', 10)->get();
+
+
+$posts = Post::doesntHave('comments')->get();	
+//gives all posts but excludes comments table relation.  If a user donot have any comment, then there will be no comments/data for those posts.
+
+
+$posts = Post::whereDoesntHave('comments', function (Builder $query) {
+$query->where('content', 'like', 'code%');
+})->get();	
+//inspects content of an element of relation table
+
+$posts = Post::whereDoesntHave('comments.author', function (Builder $query) {
+$query->where('banned', 0);
+})->get();
+It will retrieve all posts that do not have comments; however, posts that have comments from authors that are not banned will be included in the results:
+
+
+
+
+
+“LOADING”-->
+Lazy loading is a technique where related models are not loaded at the same time as the main model, but are loaded only when they are accessed for the first time. This means that the related models are only loaded from the database as they are needed.
+Eager loading is a technique where related models are loaded at the same time as the main model, using an additional query to the database. This approach can be beneficial when dealing with a small number of related models, as it can help to eliminate the need for additional queries and improve the performance of the application.
+
+Use simple lazy loading
+$books = Book::with('author')->get();
+
+Eager Loading Multiple Relationships
+$books = Book::with(['author', 'publisher'])->get();
+
+To eager load a relationship's relationships,
+$books = Book::with('author.contacts')->get();
+Nested->
+$books = Book::with([
+'author' => [
+'contacts',
+'publisher',
+],
+])->get();
+
+
+
+Eager Loading By Default
+protected $with = ['author'];
+
+public function author(): BelongsTo
+{
+return $this->belongsTo(Author::class);
+}
+If you would like to remove an item from the $with property for a single query, you may use the without method:
+$books = Book::without('author')->get();
+Eager loading with query->
+$users = User::with(['posts' => function (Builder $query) {
+$query->where('title', 'like', '%code%');
+}])->get();
+OR
+$users = User::with(['posts' => function (Builder $query) {
+$query->orderBy('created_at', 'desc');
+}])->get();
+
+
+
+
+
+“SEEDER”-->
+Laravel contains seed classes to add many fake data quickly into the database for testing purposes, and these classes are stored into the location, database/seeders. 
+
+“Creating Seeder”->
+1.	php artisan make:seeder CustomerSeeder //creates a seeder
+2.	Goto database/seeders/CustomerSeeder.php
+Type your Database(sql) query in this function ->
+public function run(): void{
+//}
+
+3.	You have to include the model of your table(i.e customers) in database/seeders/CustomerSeeder.php
+Add this code in database/seeders/CustomerSeeder.php
+use App\Models\Customer;
+
+4.	Add this code in database/seeders/CustomerSeeder.php
+
+public function run(): void
+   {
+       $customer = new Customer;       //creates an object
+
+       //Now enter the data you want to test respect to columns in your DB
+       $customer->name = "Sam";
+       $customer->email = "abc@gmail.com";
+       $customer->gender = "M";
+       $customer->address = "abcdefg";
+       $customer->state = "HR";
+       $customer->country = "India";
+       $customer->date = now();
+       $customer->password = "133244";
+       $customer->save();
+   }
+
+5.	Goto database/seeders/DatabaseSeeder.php
+Add this code
+public function run(): void
+   {
+      $this->call([CustomerSeeder::class]);
+   }
+
+“CustomerSeeder” is the name of the seeder, which will be executed when the “php artisan db:seed” is executed
+
+6.	php artisan db:seed
+Some entries will be inserted in your “phpmyadmin” DB
+
+
+
+“FAKER”->
+If you want to create similar entries with unique data MULTIPLE” times, then we have to use faker.
+1.	You have to include the model of your table(i.e customers) in database/seeders/CustomerSeeder.php
+
+Add this code in database/seeders/CustomerSeeder.php
+use Faker\Factory as Faker;
+
+2.	Add this code in database/seeders/CustomerSeeder.php
+public function run(): void
+   {
+       $faker = Faker::create();
+       $customer = new Customer;       //creates an object
+       //Now enter the data you want to test respect to columns in your DB
+       $customer->name = $faker->name;
+       $customer->email = $faker->email;
+       $customer->gender = "M";
+       $customer->address = $faker->address;
+       $customer->state = $faker->state;
+       $customer->country = $faker->country;
+       $customer->date = $faker->date;
+       $customer->password = $faker->password;
+       $customer->save();
+   }
+
+3.	php artisan db:seed
+Some entries will be inserted in your “phpmyadmin” DB
+Every time you execute the above command, different UNIQUE entries will be entered in the DB.
+
+4.	Use loop if you dont want to run seed command multiple times
+public function run(): void
+   {
+       $faker = Faker::create();
+
+       for($i=1;$i<=100;$i++){
+           $customer = new Customer;       //creates an object
+           //Now enter the data you want to test respect to columns in your DB
+           $customer->name = $faker->name;
+           $customer->email = $faker->email;
+           $customer->gender = "M";
+           $customer->address = $faker->address;
+           $customer->state = $faker->state;
+           $customer->country = $faker->country;
+           $customer->date = $faker->date;
+           $customer->password = $faker->password;
+           $customer->save();
+       }
+   }
+
+
+
+
+
+
+
+
+
+
+“Model”
+Models are class based php files, uses ORM
+Models works for tables, each table has its own model
+
+“Creating Model in laravel”
+
+1.	php artisan make:model Customer
+2.	Goto app/Models/Customer.php
+Now we have to map our database table here
+class Customer extends Model
+{
+use HasFactory;
+private $table = "customers";
+private $primaryKey = "customer_id";
+}
+3.	Enter a data for one row in your DB through phpmyadmin
+4.	Goto web.php,
+use App\Models\Customer;
+
+Route::get('/customer', function(){
+$customers = Customer::all();
+echo "<pre>";
+print_r($customers->toArray());
+});
+
+5.	Goto App/Models/Customer.php
+class Customer extends Model
+{
+use HasFactory;
+protected $table = "customers";
+protected $primaryKey = "customer_id";
+}
+
+“To create a modal & migrate it at same time”
+php artisan make:model Product –migration
+
+
+“CRUD OPERATIONS IN LARAVEL”
+
+“Creating an Insert Query in laravel”
+1.	Create a table “Customers” in your DB with field attributes.
+2.	Create a form.blade.php to create yout form
+3.	Create Routes in web.php
+Route::get('/customer', [CustomerController::class, 'index']);
+Route::post('/customer', [CustomerController::class, 'store']);
+
+4.	Create a controller
+php artisan make:controller CustomerController
+Add this code
+
+public function index(){
+return view(‘form’);
+}
+public function store(Request $request){
+echo "<pre>";
+print_r($request->all());
+
+$customer = new Customer;
+
+$customer->name = $request['name'];
+$customer->email = $request['email'];
+$customer->gender = $request['gender'];
+$customer->address = $request['address'];
+$customer->state = $request['state'];
+$customer->country = $request['country'];
+$customer->dob = $request['dob'];
+$customer->password = md5($request['password']);
+$customer->save();
+}
+
+5.	Create a model
+php artisan make:model Customer
+Add this code 
+class Customer extends Model
+{
+use HasFactory;
+protected $table = "customers";
+protected $primaryKey = "customer_id";
+}
+
+6.	Goto CusomerController.php
+use App\Models\Customer;
+
+
+“SELECT QUERY in Laravel”-->
+
+1.	Goto web.php
+Route::get('/customer/view', [CustomerController::class, 'view']);
+
+2.	Goto CustomerCuntroller.php
+Add a redirect while data is saved in DB
+return redirect('/customer/view');
+
+Make sure model is include
+use App\Models\Customer;
+
+Then
+public function view(){
+$customers = Customer::all();
+$data = compact('customers');
+return view('customer-view')->with($data);
+}
+
+
+3.	Goto  resources/views and create a file
+customer-view.blade.php
+
+Write your html code to show tables from DB
+Add
+<tbody>
+@foreach ($customers as $customer )
+<tr>
+<td>{{$customer->name}}</td>
+<td>{{$customer->email}}</td>
+<td>
+@if ($customer->gender == "M")
+Male
+@elseif ($customer->gender == "F")
+Female
+@else
+Other
+@endif
+</td>
+<td>{{$customer->dob}}</td>
+<td>{{$customer->state}}</td>
+<td>{{$customer->country}}</td>
+</tr>
+@endforeach
+</tbody>
+
+“Routing through buttons  & anchor tags”
+1.	Create a index.blade.php , write your html code to show the homepage
+and Add
+<div>
+<a href="{{url('/customer/index')}}">Home</a>
+<a href="{{url('/register')}}">Register</a>
+<a href="{{url('/customer/view')}}">View</a>
+</div>
+
+2.	Goto web.php, add the Route
+Route::get('customer/index', [CustomerController::class, 'homepage']);
+
+3.	Goto CustomerController
+Add
+public function homepage(){
+return view('index');
+}
+
+4.	 OR we can used named route, instead of url
+Route::post('/customer', [CustomerController::class, 'store'])->name('customer.create');
+
+<a href="{{route('customer.create')}}">
+
+“Delete Query in Laravel”-->
+1.	Add delete button in your customer-view.blade.php
+2.	Goto CustomerController
+Add
+public function delete($id){
+#Method1
+$customer = Customer::find($id)->delete(); //it will match id with primary key
+return redirect()->back();
+
+#Method2
+$customer = Customer::find($id); //it will match id with primary key
+if (!is_null($customer)){
+$customer->delete();
+}
+return redirect('customer/view');
+}
+
+3.	Goto web.php
+Route::get('/customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
+
+4.	Goto customer-view.blade.php
+Method1
+<a href="{{url('/customer/delete')}}/{{ $customer->customer_id }}">
+<button style="background-color:coral; font-size:large; cursor:pointer;">Delete</button>
+</a>
+Methood2
+<a href="{{route ('customer.delete’, ['id' => $customer->customer_id ]) }}">
+<button style="background-color:lightblue; font-size:large; cursor:pointer;">Edit</button>
+</a>
+
+“Update Query in Laravel”-->
+1.	Goto customer-view.blade.php
+<a href="{{route ('customer.edit', ['id' => $customer->customer_id ]) }}">
+<button style="background-color:lightblue; font-size:large; cursor:pointer;">Edit</button>
+</a>
+
+2.	Goto web.php
+Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
+
+3.	Goto CustomerController.php
+continued
+
+
+
+“Relationships in Laravel”-->
+Eloquent relationships are defined as methods on your Eloquent model classes. 
+An Eloquent relationship is a very important feature in Laravel that allows you to relate the tables in a very easy format.
+
+“One to one relationship”-->
+It provides a one-to-one relationship between the columns of different tables.  
+Eg;- a customer has a profile, so we need to link the customer table to profile table with id
+1.	Create two different models for Consumer and Mobile table
+2.	php artisan make:model Mobiles -mc 	//creates controller,model & migration also
+3.	php artisan make:model Consumer	 -mc
+4.	Goto databases create_consumer
+Schema::create('consumers', function (Blueprint $table) {
+$table->id();
+$table->string('name');
+$table->string('email');
+$table->timestamps();
+});
+
+
+5.	Goto databases create_mobiles
+Schema::create('mobiles', function (Blueprint $table) {
+$table->id();
+$table->string('model');
+$table->timestamps();
+$table->unsignedBigInteger('consumer_id');
+$table->foreign('consumer_id')->references('id')->on('consumers');
+});
+
+5.	php artisan migrate
+6.	Goto Consumer model
+public function mobile(){
+return $this->hasOne(Mobile::class);
+}
+
+7.	Insert data into through laravel
+8.	Goto Consumer controller
+public function add_consumer(){
+$mobile = new Mobile();
+$mobile->model = "Iphone 6";
+
+$customer = new Consumer();
+$customer->name = 'John';
+$customer->email = 'def@gmail.com';
+
+$customer->save();
+$customer->mobile()->Save($mobile);
+}
+
+
+9.	Goto Consumer Model
+public function mobile(){
+return $this->hasOne(Mobile::class);
+}
+
+10.	Goto web.php
+use App\Http\Controllers\MobileController;
+use App\Http\Controllers\ConsumerController;
+
+Route::get('add-consumer', [ConsumerController::class, 'add_consumer']);
+
+
+11.	Goto http://127.0.0.1:8000/add-consumer
+It will add data to DB, change values in ConsumerController to enter new data & visit the url again.
+12.	Goto Consumer Controller
+Now we will retrieve data, based on relations
+public function show_mobile($id){
+$mobile = Consumer::find($id)->mobile;
+return $mobile;
+}
+
+13.	Goto web.php
+Route::get('show-mobile/{id}', [ConsumerController::class, 'show_mobile']);
+
+14.	Goto browser
+http://127.0.0.1:8000/show-mobile/1
+
+
+“One to one Inverse/belongsTo relationship ”-->
+Now, we retrieve the Consumer information based on the mobile.
+
+1.	Goto Mobile model
+public function consumer(){
+return $this->belongsTo(Consumer::class);
+}
+
+2.	Goto Mobile Controller
+use App\Models\Mobile;
+use App\Models\Consumer;
+
+public function show_consumer($id){
+$consumer = Mobile::find($id)->consumer;
+return $consumer;
+}
+
+3.	Goto web.php
+Route::get('show-consumer/{id}', [MobileController::class, 'show_consumer']);
+
+4.	Goto http://127.0.0.1:8000/show-consumer/1
+
+“Fecthing data through single controller”-->
+1.	Goto  Consumer Controller
+public function show_mobile($id){
+$mobile = Consumer::find($id)->mobile;
+return view('mobile', ['mobile'=>$mobile]);
+}
+
+2.	Create a view file mobile.blade.php
+<!DOCTYPE html>\
+<head>
+</head>
+<body>
+{{$mobile}}
+<h1>Model: {{$mobile->model}}</h1>
+</body>
+</html>
+
+3.	Goto  http://127.0.0.1:8000/show-mobile/2
+
+
+“One to Many Relationship”-->
+Eg:- A user can have multiple posts
+1.	php artisan make:model Author -mc
+2.	php artisan make:model Post -mc
+3.	Goto authors migration
+Schema::create('authors', function (Blueprint $table) {
+$table->id();
+$table->string('username');
+$table->string('password');
+$table->timestamps();
+});
+
+4.	Goto posts migration
+Schema::create('posts', function (Blueprint $table) {
+$table->id();
+$table->string('title');
+$table->string('cat');
+$table->timestamps();
+$table->unsignedBigInteger('author_id');
+$table->foreign('author_id')->references('id')->on('authors');
+});
+
+5.	php artisan migrate
+6.	Goto Author Model
+public function posts(){
+return $this->hasMany(Post::class);
+}
+
+7.	Goto AuthorController
+use App\Models\Author;
+use App\Models\Post;
+
+public function add_author(){
+$author = new Author();
+$author->username = "Ankit";
+$author->password = "Ankit@123";
+$author->save();
+}
+
+8.	Goto PostController
+public function add_post($id){
+$author = Author::find($id);
+$post = new Post();
+$post->title = "Title 1";
+$post->cat = "Cat 1";
+$author->post()->save($post);
+}
+
+9.	Goto web.php
+Route::get('add-author', [AuthorController::class, 'add_author']);
+Route::get('add-post/{id}', [AuthorController::class, 'add_post']);
+
+10.	Goto
+http://127.0.0.1:8000/add-author change data in AuthorController and run again
+
+11.	Goto http://127.0.0.1:8000/add-post/1 , change data in PostController & id, run again
+
+Retrieving data from table
+12.	Goto PostController
+public function show_post($id){
+$post = Author::find($id)->posts;
+return $post;
+}
+
+13.	Goto web.php
+Route::get('show-post/{id}', [PostController::class, 'show_post']);
+
+14.	Goto http://127.0.0.1:8000/show-post/1
+
+“One to Many Inverse”-->
+Find a user from post
+1.	Goto AuthorController
+public function show_author($id){
+$author = Post::find($id)->author;
+return $author;
+}
+
+2.	Goto Post Model
+public function author(){
+return $this->belongsTo(Author::class);
+}
+
+3.	Goto web.php
+Route::get('show-author/{id}', [AuthorController::class, 'show_author']);
+
+4.	Goto http://127.0.0.1:8000/show-author/2
+
+Retrieving Data from both Tables
+1.	php artisan make:controller IndexController
+use App\Models\Author
+use App\Models\Post
+
+public function index($id){
+$author = Author::find($id);
+//var_dump($author->username);
+
+foreach($author->posts as $post){
+	echo $post;
+}
+}
+2.	Goto web.php
+use App\Http\Controllers\IndexControllers
+Route::get(‘index/{id}’, [IndexController::class, ;index’]);
+
+3.	Goto http://127.0.0.1:8000/index/2
+
+
+“Has One Through Relationship”-->
+It defines a one-to-one relationship with another model
+First table can get the data of third table.
+Eg:- A mechanic makes a car & car is owned by owner.
+Now we can identifty owner through mechaniic
+1.	php artisan make:model Mechanic -mc
+2.	php artisan make:model Car -mc
+3.	php artisan make:model Owner -mc
+4.	Goto create_mechanics migration file
+Schema::create('mechanics', function (Blueprint $table) {
+$table->id();
+$table->string('name');
+$table->timestamps();
+});
+
+5.	Goto create_cars migration file
+Schema::create('cars', function (Blueprint $table) {
+$table->id();
+$table->string('model');
+$table->timestamps();
+$table->unsignedBigInteger('mechanic_id');
+$table->foreign('mechanic_id')->references('id')->on('mechanics');
+});
+
+6.	Goto create_owners migration file
+Schema::create('owners', function (Blueprint $table) {
+$table->id();
+$table->string('name');
+$table->timestamps();
+$table->unsignedBigInteger('car_id');
+$table->foreign('car_id')->references('id')->on('cars');
+});
+
+7.	php artisan migrate
+8.	Goto Mechanic Model
+public function car(){
+return $this->hasOne(Car::class);
+}
+
+9.	Goto Car Model
+public function owner(){
+return $this->hasOne(Owner::class);
+}
+
+10.	Goto MechanicController
+use App\Models\Car;
+use App\Models\Mechanic;
+use App\Models\Owner;
+
+public function add_mechanic(){
+$mechanic = new Mechanic();
+$mechanic->name = 'Jack';
+$mechanic->save();
+}
+
+11.	Goto CarController
+use App\Models\Car;
+use App\Models\Mechanic;
+use App\Models\Owner;
+public function add_car($id){
+$mechanic = Mechanic::find($id);
+$car = new Car();
+$car->model = 'Supra';
+$mechanic->car()->save($car);
+}
+
+12.	Goto OwnerController
+use App\Models\Car;
+use App\Models\Mechanic;
+use App\Models\Owner;
+
+public function add_owner($id){
+$car = Car::find($id);
+$owner = new Owner();
+$owner->name = 'Sam';
+$car->owner()->save($owner);
+}
+
+13.	Goto web.php
+Route::get('add-mechanic', [MechanicController::class, 'add_mechanic']);
+Route::get('add-car/{id}', [CarController::class, 'add_car']);
+Route::get('add-owner/{id}', [OwnerController::class, 'add_owner']);
+
+14.	Goto http://127.0.0.1:8000/add-mechanic change value in controller, add more data
+15.	Goto http://127.0.0.1:8000/add-car/1
+16.	Goto http://127.0.0.1:8000/add-owner/1
+
+“Retrieving Data hasOne”
+//Normal Method
+17.	Goto OwnerController
+public function show_owner($id){
+
+$owner = Mechanic::find($id)->car->owner;
+return $owner;
+}
+
+18.	Goto web.php
+Route::get('show-owner/{id}', [OwnerController::class, 'show_owner']);
+
+19.	Goto http://127.0.0.1:8000/show-owner/1
+
+//HasOne Method
+20.	Goto MechanicController
+public function owner(){
+return $this->hasOneThrough(Owner::class, Car::class);
+}
+
+21.	Goto OwnerController
+public function show_owner($id){
+$owner = Mechanic::find($id)->owner;
+return $owner;
+}
+      22. Goto http://127.0.0.1:8000/show-owner/1
+ 
+
+
+“Has Many Through”-->
+For example, we have three tables, users, posts, and country table. Now, we want to find the posts belonging to that country through the User model.
+OR
+Multiple Projects -> uses multiple Languages -> Deployment status (pending/done).
+
+1.	php artisan make:model Project -mc
+2.	php artisan make:model Language -mc
+3.	php artisan make:model Deployment -mc
+4.	Goto create_projects migration file
+Schema::create('projects', function (Blueprint $table) {
+$table->id();
+$table->string('name');
+$table->timestamps();
+});
+
+5.	Goto create_languages migration file
+Schema::create('languages', function (Blueprint $table) {
+$table->id();
+$table->string('name');
+$table->timestamps();
+$table->unsignedBigInteger('project_id');
+$table->foreign('project_id')->references('id')->on('projects');
+});
+
+6.	Goto create_deployments migration file
+Schema::create('deployments', function (Blueprint $table) {
+$table->id();
+$table->string('work');
+$table->timestamps();
+$table->unsignedBigInteger('language_id');
+$table->foreign('language_id')->references('id')->on('languages');
+});
+
+7.	php artisan migrate
+8.	Goto Project Model
+public function language(){
+return $this->hasMany(Language::class);
+}
+
+9.	Goto Language Model
+public function deployment(){
+return $this->hasMany(Deployment::class);
+}
+
+10.	Goto ProjectController
+use App\Models\Deployment;
+use App\Models\Project;
+use App\Models\Language;
+
+public function add_project(){
+$project = new Project();
+$project->name = "ShoppinglyX";
+$project->save();
+}
+
+
+11.	Goto web.php
+Route::get('add-project{id}', [ProjectController::class, 'add_project']);
+
+12.	Goto LanguageController
+public function add_language($id){
+$project = Project::find($id);
+$language = new Language();
+$language->name = "Python";
+$project->language()->save($language);
+}
+
+13.	Goto web.php
+Route::get('add-language/{id}', [LanguageController::class, 'add_language']);
+
+14.	Goto DeploymentController
+public function add_deployment($id){
+$language = Language::find($id);
+$deployment = new Deployment();
+$deployment->work = "done";
+$language->deployment()->save($deployment);
+}
+
+15.	Goto web.php
+Route::get('add-deployment/{id}', [DeploymentController::class, 'add_deployment']);
+
+16.	Goto http://127.0.0.1:8000/add-project change data in ProjectController & run again x3 times
+17.	Goto http://127.0.0.1:8000/add-language/1 change data in LanguageController & run again, Now with diiferent id
+18.	Goto http://127.0.0.1:8000/add-deployment/1  x2 ,	change data in DeploymentController & run again, Now with diiferent id
+
+Retrieving Data
+//Normal Method
+19.	Goto DeploymentController
+public function show_deployment($id){
+$deployment = Project::find($id)->language->flatMap->deployment;
+return $deployment;
+}
+
+20.	Goto web,php
+Route::get('show-deployment/{id}', [DeploymentController::class, 'show_deployment']);
+
+21.	Goto http://127.0.0.1:8000/show-deployment/1
+
+//HasManyThrough Method
+22.	Goto Project Model
+public function deployment(){
+return $this->hasManyThrough(Deployment::class, Language::class);
+}
+
+23.	Goto DeploymentController
+public function show_deployment($id){
+$deployment = Project::find($id)->deployment;
+return $deployment;
+}
+
+24.	Goto http://127.0.0.1:8000/show-deployment/1
+
+
+
+“Many To Many Relationship”-->
+It is complicated.
+To define it, we need three database tables
+Eg:- Song1<-singer A + singer B<-diff. singerA/B/C
+Song2<-singer A + singer C<-diff. singerA/B/C
+OR
+a book has many authors, author has written many books. A single book is written by multiple authors
+
+1.	php artisan make:model Singer -mc
+2.	php artisan make:model Song -mc
+3.	php artisan make:model SingerSong -m	//Mediator table, don’t need controller. It will have two foriegn keys.
+4.	Goto create_singers migration file
+Schema::create('singers', function (Blueprint $table) {
+$table->id();
+$table->string('name');
+$table->timestamps();
+});
+
+5.	Goto create_songs migration file
+Schema::create('songs', function (Blueprint $table) {
+$table->id();
+$table->string('title');
+$table->timestamps();
+});
+
+6.	Goto create_SingerSong migration file
+Schema::create('singer_songs', function (Blueprint $table) {
+$table->id();
+$table->timestamps();
+$table->foreignId('singer_id')->constrained('singers');
+$table->foreignId('song_id')->constrained('songs');
+
+//Method 2 to create foreign key
+// $table->unsignedBigInteger('singer_id');
+// $table->foreign('singer_id')->references('id')->on('singers');
+// $table->unsignedBigInteger('song_id');
+// $table->foreign('song_id')->references('id')->on('songs');
+});
+
+7.	php artisan migrate
+8.	Goto Singer Model
+public function songs(){
+return $this->belongsToMany(Song::class, 'singer_songs');
+}
+//’singer_songs’ is our intermediate table
+
+9.	Goto SongController
+use App\Models\Song;
+use App\Models\Singer;
+
+public function add_song(){
+$song = new Song();
+$song->title = "Attention";
+$song->save();
+}
+
+
+10.	Goto web.php
+use App\Http\Controllers\SingerController;
+use App\Http\Controllers\SongController;
+
+Route::get('add-song', [SongController::class, 'add_song']);
+
+11.	Goto http://127.0.0.1:8000/add-song , change data in song controller, add more songs.
+12.	Goto SingerController
+use App\Models\Singer;
+use App\Models\Song;
+
+\public function add_singer(){
+$singer = new Singer();
+$singer->name = "Charlie Puth";
+$singer->save();
+
+$songids = [1,2]; //will save this singer to two songs
+$singer->songs()->attach($songids);
+}
+
+13.	 Goto web.php
+Route::get('add-singer', [SingerController::class, 'add_singer']);
+ 
+14.	Goto http://127.0.0.1:8000/add-singer change data, add more singer, give $songids = [1,3,5]
+
+“Retreiving Data”
+//Get Songs based on singer id
+15.	Goto SongController
+public function show_song($id){
+$song = Singer::find($id)->songs;
+return $song;
+}
+
+16.	 Goto web.php
+Route::get('show-song/{id}', [SongController::class, 'show_song']);
+
+17.	Goto http://127.0.0.1:8000/show-song/1
+//Get Singer based on song id
+18.	 Goto SingerController
+public function show_singer($id){
+$singer = Song::find($id)->singers;
+return $singer;
+}
+
+19.	Goto web.php
+Route::get('show-singer/{id}', [SingerController::class, 'show_singer']);
+
+“Defining Inverse Relationship”
+20.	Goto Song Model
+21.	public function singers(){
+return $this->belongsToMany(Singer::class, 'singer_songs');
+}
+22.	Goto http://127.0.0.1:8000/show-singer/1
+
+
+
+
+
+
+“Custom Helper in Laravel”-->
+It is a php file, where we store multiple functions & performs the task repeatedly
+1.	Goto app create a file helper.php
+Add
+<?php
+if(!function_exists('p')){
+function p($data){
+echo "<pre>";
+print_r($data);
+echo "<pre>";
+}
+}
+?>
+
+2.	Goto composer.json
+Search for “autoload”
+Add 
+"files": [
+"app/helper.php"
+],
+
+3.	Composer dump-autoload //adds the new file
+4.	Now use anywhere in your project 
+p($request);
+
+
+“Mutator in Laravel”-->
+Mutator transforms an eloquent attribute value when it is set
+It helps to modify the data which is going to be stored in DB.
+To perform it, we have to create a function having the attribute of field in DB.
+
+1.	Goto Customer.php //Model of table you are working
+Add
+public function setNameAttribute($value){
+$this->attributes['name'] = ucwords(($value));
+//$value is value submiited during form, set'Name'Attribute Name is the field name of your DB
+//Use setUserNameAttribute, if name of field is user_name
+//ucwords converts to uppercase
+}
+
+“Accessor in Laravel”-->
+Works while fetching data from DB.
+1.	Goto Customer.php //Model of table you are working
+Add
+public function getDobAttribute($value){
+return date("d-M-Y", strtotime($value));
+}
+
+“
+
+
+BLADE→
+It is a templating engine to design a unique layout. The layout thus designed can be used by other views, and includes a consistent design and structure.
+
+It gives it own syntax replaces core php’s “echo, conditional, looping statements etc”
+
+Blade template files use the .blade.php file extension and are typically stored in the resources/views directory.
+
+Core PHP Syntax->
+<?php
+  echo “Hi”;
+?>
+
+Blade PHP Syntax→
+{{ $name }} //replaces <?php ?>, used for simple echo 
+  does not decode html, prints everything as a string
+{!! $name !!} //replaces <?php ?>
+  It decodes the html 
+  Eg;- $data = <h1>Hello</h1>
+  {{ $data }} ,prints “<h1>Hello</h1>
+  {!! $data !!} ,prints “Hello”
+
+{{ – Comment –}} //comment in laravel-blade
+{{ url(‘/’) }} //provides url of your browser as value
+
+@yield //displays content of a given section
+@section //defines a section of a content
+@extends //specify which layout the child view should inherit
+@errors //super global variable to show the error
+
+
+“USING BLADES”
+1.	Create a file in resources/views, home.blade.php
+2.	Goto web.php and this Route
+Route::get('/{name?}', function($name = null){
+   $data = compact('name');
+   return view('home')->with($data);
+});
+
+3.	Goto home.blade.php, add this code
+<body>
+   <h1>Welcome, {{$name  ?? "Guest"}}</h1>
+   <p>Please enter a name in the URL http://127.0.0.1:8000/[your input here]</p>
+</body>
+
+4.	Goto http://127.0.0.1:8000/
+
+Blade SYNTAX→
+1.	If Else
+@if (count($records) === 1)
+   I have one record!
+@elseif (count($records) > 1)
+   I have multiple records!
+@else
+   I don't have any records!
+@endif
+
+2.	Isset
+@isset($records)
+  // $records is defined and is not null...
+@endisset
+
+3.	Switch
+switch($i)
+@case(1)
+   First case...
+   @break
+@case(2)
+   Second case...
+   @break
+@default
+   Default case...
+@endswitch
+
+4.	Loops
+@for ($i = 0; $i < 10; $i++)
+   The current value is {{ $i }}
+@endfor
+@foreach ($users as $user)
+   <p>This is user {{ $user->id }}</p>
+@endforeach
+@forelse ($users as $user)
+   <li>{{ $user->name }}</li>
+@empty
+   <p>No users</p>
+@endforelse
+@while (true)
+   <p>I'm looping forever.</p>
+@endwhile
+
+5.	For Each
+@foreach ($users as $user)
+   @if ($loop->first)
+       This is the first iteration.
+   @endif
+   @if ($loop->last)
+       This is the last iteration.
+   @endif
+   <p>This is user {{ $user->id }}</p>
+@endforeach
+
+
+
+
+
+Controllers→
+Controllers are class based php files.
+Controllers are meant to group associated request handling logic into a single class. 
+
+Instead of defining all of your request handling logic as closures in your route files, you may wish to organize this behavior using "controller" classes. Controllers can group related request handling logic into a single class.
+In your Laravel project, they are stored in the app/Http/Controllers directory.
+
+It is of three types→
+1.	Basic Controllers - we have to define everything
+2.	Single Action Controllers - for single purpose
+3.	Resource Controllers  - for CRUD Operations
+
+
+“Creating Basic Controllers”-->
+
+1.	php artisan make:controller PasswordController –plain
+The created controller can be called from routes.php by the following syntax.
+
+2.	Goto app/Http/Controllers/PasswordController
+Add this code 
+public function index(){
+       return view('home'); 
+   }
+
+3.	Goto web.php
+Add this code
+use App\Http\Controllers\PasswordController;
+
+4.	Add this Route in web.php
+Route::get('/profile', [PasswordController::class, 'index'])
+
+“index” is the function which will execute through controller, defined in PasswordController
+
+“Creating Single Action Controller”->
+php artisan make:controller SingleAction  –invokable
+Route::get(‘/courses’), SingleAction::class);
+All further steps are same as other controllers
+
+
+“Creating Resource Controller”->
+php artisan make:controller PhotoController –resource
+
+use App\Http\Controllers\PhotoController;
+
+Route::resource('/photo', PhotoController::class);
+
+You will see that some basic coding has already been done for you and you can add your custom coding.
+Goto PhotoController.php  
+And add your desired code, you want to perform from it.
+It has index(), create(), store(), show(), edit(). update(), etc.
+
+
+“Submitting Form Data in Laravel”
+1.	Goto Resources/view
+2.	Create a file form.blade.php
+3.	Create a html form in it.
+4.	php artisan make:controller RegistrationController
+5.	Goto App/Http/Controller/RegistrationController
+6.	Add this code
+public function index(){
+return view('form');
+}
+
+public function register(Request $request){
+echo "<pre>";
+print_r($request->all());
+}
+
+7.	Goto web.php
+use App\Http\Controllers\RegistrationController;
+Route::get('/register', [RegistrationController::class, 'index']);
+Route::post('/register', [RegistrationController::class, 'register']);
+8.	Add this in your form.blade.php
+<form action="{{ url('/') }}/register" method="post">
+@csrf
+“{{ url(‘/’) }}/register //will send data through POST to given url
+@csrf //required to send data through POST in Laravel, it creates a token
+
+“Creating validation at server side in Laravel”
+Validation are in Resources/lang/en/validation
+9.	Goto RegistrationController.php
+public function register(Request $request){
+$request->validate(
+[
+'name' => 'required',
+'email' => 'required|email',
+'password' => 'required'
+]
+);
+echo "<pre>";
+print_r($request->all());
+}
+
+“Showing the reason of error occurred by validation check to user”, 
+10.	Goto your form page
+<span>
+@error('email')
+{{$message}}
+@enderror
+</span>
+
+//’email’ is the name used in input tag
+“Saving the old data in input tag, if validation occurs”
+11.	Goto your form page
+Add this in input tag, ‘name’ is the value given by you for input tag
+value="{{old('name')}}"
+
+12.	Password Confirmation Validation
+Goto RegistrationController
+1.  By Your custom key, ‘cpassword’ or any
+'password' => 'required|confirmed',
+'cpassword' => 'required|same:password'
+2. By Default key,
+You have to use name=”password_confirmation” in cpass input tag in your form
+'password' => 'required|confirmed',
+'password_confirmation' => 'required'
+Showing Errors->
+1.	Custom
+<span>@error('name')
+Please enter name
+@enderror</span>
+2.	Custom(2)
+3.	['name' => 'required'],
+4.	['name.required' => 'Name is incorrect']
+5.	OR you can change in validation file
+6.	Default
+<span>
+@error('email')
+{{$message}}
+@enderror
+</span>
+Other Validations->
+‘img’=> 'dimensions:min_width=100,min_height=200',
+‘password’=> required|string|confirmed|min:8’
+‘name’=>’required|max:255’, ‘age’=>’required_with:name’
+
+“Components in Laravel”-->
+Components are used to reuse a block of code again & again by just its syntax.
+“Creating Components in Laravel”
+1.	php artisan make:component Input
+A Component file is created at  app/View/Components/Input (it’s a class based file)
+& Blade file also created at resources/View/components/input.blade.php  (it’s a file where 
+
+2.	Goto resources/View/components/input.blade.php 
+Type your code which you want to use it anytime
+<div>
+<label for="">{{$label}}</label>
+<input type="{{$type}}" name="{{$name}}" />
+</div>
+
+3.	Goto form.blade.php, it is the main file where you will use your component. 
+<x-input type="text" name="name" label="Please enter your name" />
+<x-input type="email" name="email" label="Please enter your email" />
+
+4.	Goto app/View/Components/Input
+public $type;
+public $label;
+public $name;
+/**
+* Create a new component instance.
+*/
+public function __construct($type,$name,$label)
+{
+$this->type= $type;
+$this->name= $name;
+$this->label= $label;
+}
+
+
+“Session in Laravel”-->
+Change session lifetime in .env to alter session duration
+“Creating Session”->
+1.	Global Session
+Goto web.php
+Route::get('get-all-session', function(){
+$session = session()->all();
+echo "<pre>";
+print_r($session);
+echo "<pre>";
+});
+
+2.	Custom Session
+Goto web.php
+use Illuminate\Http\Request;
+
+Route::get('set-session', function(Request $request){
+$request = session()->put('username','Ankit');
+$request = session()->put('id','1');
+return redirect('get-all-session');
+});
+
+“Destroying Session”-->
+1.	
+Route::get('destroy-session', function(Request $request){
+// session()->forget('username');
+// session()->forget('id');
+session()->forget(['id', 'username']);
+return redirect('get-all-session');
+});
+
+“Showing Session Data in Pages”-->
+Add anywhere in the code,
+
+#Method1
+{{session()->get('username')}}
+
+#Method2
+@if (session()->has('username'))
+{{session()->get('username')}}
+@else
+Guest
+@endif
+
+“Flash in Session” //shows session data for one time only
+Route::get('set-session', function(Request $request){
+$request = session()->flash('status','success');
+return redirect('get-all-session');
+});
+ 
+
+“Softdelete”
+It is used to temporarily delete data.
+It uses “deleted_at” column in DB
+Eg: move to cart, move to trash
+
+“Creating softdelete”
+1.	Goto App/Models/Customer.php
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Customer extends Model
+{ 
+use SoftDeletes;
+}
+
+2.	php artisan make:migration add_deleted_at_to_customers_table
+3.	Goto database/migrations/add_deleted_at
+public function up(): void
+{
+Schema::table('customers', function (Blueprint $table) {
+$table->softDeletes();
+});
+}
+
+public function down(): void
+{
+Schema::table('customers', function (Blueprint $table) {
+$table->dropSoftDeletes();
+});
+}
+
+4.	php artisan migrate
+5.	Delete a data from your DB
+6.	Create a new file customer-trash.blade.php
+Write your html code to create a form to “view saved data from DB & add Delete & Restore button”
+
+<a href="{{route('customer.softdelete', ['id' => $customer->customer_id])}}">
+<button style="background-color:coral; font-size:large; cursor:pointer;">Trash</button>
+</a>
+
+Route::get('/customer/softdelete/{id}', [CustomerController::class, 'softdelete'])->name('customer.softdelete');
+
+
+public function softdelete($id){
+$customer = Customer::find($id); //it will match id with primary key
+if (!is_null($customer)){
+$customer->delete();
+}
+return redirect('customer/view');
+}
+
+“Viewing trashed data”
+7.	Goto web,php
+Route::get('customer/trash', [CustomerController::class, 'trash']);
+
+
+8.	Goto CustomerController.php
+public function trash(){
+$customers = Customer::onlyTrashed()->get();
+$data = compact('customers');
+return view('customer-trash')->with($data);
+}
+
+“Restoring Data in Softdelete”
+9.	Create a route for restore button in customer-trash.blade.php
+<a href="{{route('customer.restore', ['id' => $customer->customer_id])}}">
+<button style="background-color:lightblue; font-size:large; cursor:pointer;">Restore</button>
+</a>
+
+10.	Goto web.php 
+Route::get('/customer/restore/{id}', [CustomerController::class, 'restore'])->name('customer.restore');
+
+11.	Goto CustomerController.php
+public function restore($id){
+$customer = Customer::withTrashed()->find($id); //it will match id with primary key
+if (!is_null($customer)){
+$customer->restore();
+}
+return redirect('customer/view');
+}
+
+“Permanently deleting data”-->
+12.	 Goto web.php 
+Route::get('/customer/force-delete/{id}', [CustomerController::class, 'forceDelete'])->name('customer.force-delete');
+
+13.	Goto CustomerController.php
+public function forceDelete($id){
+$customer = Customer::withTrashed()->find($id); //it will match id with primary key
+if (!is_null($customer)){
+$customer->forceDelete();
+}
+return redirect()->back();
+}
+
+14.	Create a route for delete button in customer-trash.blade.php
+<a href="{{route('customer.force-delete', ['id' => $customer->customer_id])}}">
+<button style="background-color:coral; font-size:large; cursor:pointer;">Delete</button>
+</a>
+
+
+
+“File Handling in Laravel”-->
+1.	Goto resources/views
+Create a file upload.blade.php
+Write your html code to create a form and upload a file from it
+<form action="{{url('/upload')}}" method="post" enctype="multipart/form-data">
+@csrf
+<div>
+<label>File</label>
+<input type="file" name="image" >
+<button type="submit" value="">Upload</button>
+</div>
+</form>
+
+2.	Create a controller FileUploadController
+public function homepage(){
+return view('upload');
+}
+public function upload(Request $request){
+//'image' is key from form's input tag
+//custom filename
+$fileName = time()."-myfile.".$request->file('image')->getClientOriginalExtension();
+echo $request->file('image')->storeAs('uploads', $fileName);
+
+//default filename
+// $request->file('image')->store('uploads');
+}
+
+3.	Goto web.php
+Route::get('/upload', [FileUploadController::class, 'homepage']);
+Route::post('/upload', [FileUploadController::class, 'upload']);
+
+
+
+“Exceptional Handling in Laravel”-->
+Normal handling
+try{
+//Your code that will execute
+}
+catch(\Exception $exception){
+dd($exception->getMessage()); //dump & die
+//dump displays the message, die abort the further process.
+}
+
+Shows class of the exception
+dd(get_class($exception));
+
+With class handling
+First we have to get a class of exception & then use it.
+try{
+//Your code that will execute
+}
+catch(\Illuminate\Database\Eloquent\ModelNotFoundException $exception){
+return view(‘error’);
+OR return “Model class error”
+}
+
+
+
+QUEUES-->
+Queues are used to perform a parallel task at backend automatically.
+Eg:- Uploading a file at backend & user is using apllication.
+1.	Create DB configurations in .env file  QUEUE_CONNECTION=database
+2.	php artisan queue:table 		//creates a migration file
+3.	php artisan migrate			/creates a table “jobs” in DB
+4.	php artisan make:job AddPost	//create a named job
+5.	Goto app/jobs/AddPost.php
+6.	Write your desired code in handle()
+$id = DB::table('customers')->max('customer_id');
+$post = new Post();
+$post->title = "Default Post";
+$post->description = "This post is created automatically";
+$post->customer_customer_id = $id;
+$post->save();
+
+7.	Call it in the controller / sending job to the queue
+AddPost::dispatch();
+
+8.	php artisan queue:work
+
+Queue with condition->
+ProcessPodcast::dispatchIf($accountActive, $podcast);
+ProcessPodcast::dispatchUnless($accountSuspended, $podcast);
+
+Delayed Dispatching->
+ProcessPodcast::dispatch($podcast)
+                    ->delay(now()->addMinutes(10));
+
+EVENTS-->
+Events are the ways we hook into the activities of our application, it is just a way to observe an activity, for instance, login, a class can be created to monitor the activity of login, when a user logs in, the event class can execute some functions.
+Listener is a class that listens to the events that they are mapped to and execute a task, that is they are the ones that perform a given task for an event.
+Power of Events is that we can register multiple listeners for a single event and the event helper will dispatch the event to all of its registered listeners without us calling them explicitly. where in case of Jobs we would have to call them each one explicitly.
+For example, a job can be a simple script to calculate the account balance every month; an event can be to send email verification to a new user immediately after a successful sign-up
+Eg:- If withdrawl function is called in application, an event will be triggered to send email to account holder.
+1.	php artisan make:event myEvent
+Goto App/Events/myEvent
+2.	php artisan make:listener myListener –event=OrderPlaced
+	//this listener will include “myEvent” event, but not listen to it
+Goto App/Listener/myListener, a file will be created
+3.	To Listen,
+Goto App/Providerss/EventServiceProvider,
+protected $listen = [
+	Registered::class => [
+	SendEmailVerificationNotification::class,
+	],
+	\App\Events\myEvent::class => [
+	\App\Listeners\myListener::class
+	]
+	];
+4.	Goto Controller,
+event(new myEvent($data));
+
+5.	Goto App/Events/myEvent
+public $email;
+	public function __construct($data)
+	{
+	$this->email = $data;
+	}
+6.	Goto App/Events/myListener
+public function handle(myEvent $event): void
+{
+// dd();
+$email = $event->email;
+$user = DB::table('customers')->select('customer_id')->where('email', "$email")->first();
+$id = $user->customer_id;
+$post = new Post();
+$post->title = "Default Post";
+$post->description = "This post is created automatically";
+$post->customer_customer_id = $id;
+$post->save();
+}
+
+
+Service Provider-->
+Service Providers are php class, these class are loaded for every request.
+All service providers are available at config/app.php
+bind() - used to put service into the container
+$app property which provides access to the service container:
+If a class intance is loaded in another class instance, is called Dependency Injection
+Use:- Multiple payments gateway in application
+It has two methods – Register & Boot
+Register- Used to bind thind things to service container, every service must be registered
+
+Boot – available, ony when the application is ready.
+Boot method is called after all other service providers have been registered,
+meaning you have access to all other services that have been registered by the framework
+
+1.	php artisan make:provider myServiceProvider
+Goto App/Providers/myServiceProvider
+2.	Goto App, create a folder Service, not necessary
+3.	Create a file in Service folder, myService.php
+<?php
+
+namespace App\Service;
+
+class myService{
+public function doSomething(){
+echo "Hi from service";
+}
+}
+Now We will bind our class
+4.	Goto App/Providers/myServiceProvider
+public function register(): void
+{
+$this->app->bind('App\Service\myService');
+}
+
+5.	Goto config/app.php, add
+App\Providers\myServiceProvider::class,
+6.	Goto controller/ Create controller
+php artisan make:controller TestController
+7.	Goto web.php
+	use App\Http\Controllers\TestController;
+	Route::get('/test', [TestController::class, 'testService']);
+
+8.	Goto TestController
+use App\Service\myService;
+
+	public function testService(myService $obj){
+$obj->doSomething();
+}
+
+9.	Goto http://127.0.0.1:8000/test
+
+
+Service Container-->
+Service container is a powerful tool for managing class dependencies and performing dependency injection. Its sole responsibility is to manage the dependencies in your laravel project.
+Almost all of your service container bindings will be registered within service providers
+You may use the bindIf method to register a container binding only if a binding has not already been registered for the given type
+The singleton method binds a class or interface into the container that should only be resolved one time. Once a singleton binding is resolved, the same object instance will be returned on subsequent calls into the container
+bind()
+singleton()
+extend()
+tag()
+
+
+Broadcast->
+The core concepts behind broadcasting are simple: clients connect to named channels on the frontend, while your Laravel application broadcasts events to these channels on the backend. These events can contain any additional data you wish to make available to the frontend.
+Laravel's event broadcasting allows you to broadcast your server-side Laravel events to your client-side JavaScript application using a driver-based approach to WebSockets. Currently, Laravel ships with Pusher Channels and Ably drivers. The events may be easily consumed on the client-side using the Laravel Echo JavaScript package.
+Sends real time time data without reloading the page to our application
+Server accepts the request and returns a channel
+event recieved by javascript, we can display the message
+laravel-echo-server
+Pusher
+
+
+Modules-->
+1.	composer require nwidart/laravel-modules
+2.	php artisan vendor:publish –provider="Nwidart\Modules\LaravelModulesServiceProvider"
+3.	Goto composer.json
+4.	“autoload” -> “psr-4” -> Add
+Modules\\": "Modules/",
+
+5.	composer dump-autoload
+6.	php artisan module:make TestModule
+7.	To create anything in your module
+php artisan module:make-model myModule -mc TestModule
+OR any other like -> php artisan module:make-controller NewController TestModule
+8.	php artisan module:migrate TestModule	//to run only this module
+9.	Create a blade file in module->resources->view, write your code
+10.	Goto modules->routes->web.php
+Route::view('module', 'testmodule::testing');
+11.	Goto http://127.0.0.1:8000/module
+
+
+
+Php Artisan Custom Commands-->
+php artisan list 	//list all commands
+php artisan help make:migration 		//shows details of command
+
+1.	php artisan make:command AddUser
+2.	Goto app/console/commands/Adduser
+protected $signature = 'add:user';
+	
+	protected $description = 'Add a new user';
+public function handle()
+{
+$this->info("Command was sucessfully executed");
+}
+
+3.	php artisan add:user 		//check your command
+4.	info()		//shows green message						         yarn()		//shows yellow message						           error()		//shows red text							            line()		//shows white text
+
+Adding a new user through custom command-->
+1.	Do all the configurations, 2 steps above
+2.	public function handle()
+{
+$customer = Customer::factory()->create();
+$this->info("$customer->name created sucessfully!");
+}
+3.	php artisan add:user
+
+Getting input through terminal to command file
+protected $signature = 'add:user {name} {emai}';
+
+$customer->name = $this->argument(“name”);
+$customer->name = $this->argument(“email”);
+crequire nwidart/laravel-module
+Prompting on terminal to enter input
+$name = $this->ask("Please enter name");
+$this->info($name);
+
+$this->confirm(“message here” . true){}	
+
+Calling artisan command in file
+use Illuminate\Support\Facades\Artisan;
+
+Artisan::call("add:user");
+
+
+Factories in Laravel-->
+By using factories you can easily create test data for your Laravel application based on your Model. In Factory, we are using other classes or libraries like fzaninotto/faker to generate fake data easily. In Factory, we can also generate data related to the relationship while in DB Seeder we cannot do that
+1.	Make sure your model already exists
+2.	php artisan make:factoryCustomerFactory –model=Customer
+3.	Go to factory\factory\database\factories\CustomerFactory.php
+public function definition(): array
+{
+return [
+'name' => $this->faker->name(),
+'email' => $this->faker->email(),
+'address' => $this->faker->citySuffix(),
+];
+}
+4.	composer dump autoload
+5.	Call from anywhere,
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+$customer = Customer::factory()->create();
+
+Notifications in Laravel-->
+Laravel allows you to select from various notification channels to send notifications in your application. You can use more than one channel.
+•	Mail— These notifications are sent as an email to users.
+•	SMS— Users receive these SMS notifications on their mobile phones.
+•	Database— These notifications are stored in the database, and you can display them to the user with a custom UI.
+•	Slack— These notifications are sent to Slack channels.
+To show notifications blade file-->
+php artisan vendor:publish --tag=laravel-notifications
+php artisan vendor:publish –tag=laravel-mail
+
+Mail Notifications->
+1.	php artisan make:notification WelcomeNotification
+2.	Goto app/Notifications/WelcomeNotification.php
+3.	Add in your model
+use Notifiable;
+4.	Goto your controller
+use App\Notifications\WelcomeNotification;
+use Illuminate\Support\Facades\Notification;
+
+$customer = Customer::select('email')->where('email','ankityad124@gmail.com')->first();
+Notification::send($customer, new WelcomeNotification);
+
+5.	Setup your mail configuration in .env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=465 #587
+MAIL_USERNAME=ankityadav.testing0506@gmail.com
+MAIL_PASSWORD=jashyqqzdqmqsief
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="ankityadav.testing0506@gmail.com"
+MAIL_FROM_NAME="${Linux}"
+
+6.	Goto route, mail will be sent
+
+Database Notifications->
+1.	php artisan notifications:table
+2.	php artisan migrate
+3.	php artisan make:notification UserRegisteredNotification
+4.	Goto customer controller
+use App\Notifications\UserRegisteredNotification;
+use Illuminate\Support\Facades\Notification;
+
+$admin = Customer::select('*')->where('email','admin@gmail.com')->first();
+Notification::send($admin, new UserRegisteredNotification($data));
+
+5.	Goto UserRegisterdNotification
+public function __construct($data)
+{
+$this->email = $data;
+}
+
+public function via(object $notifiable): array
+{
+return ['database'];
+}
+
+public function toArray(object $notifiable): array
+{
+return [
+'data' => "New user registered with email {$this->email}"
+];
+}
+
+Now the entries will be stored in notifications table
+
+6.	To show notification , i have added a button & linked to seperated controller
+7.	Goto UserNotificationsController, to show notifications
+public function viewNotifications(){
+$admin = Customer::select('*')->where('email','admin@gmail.com')->first();
+return view('UserNotifications', ['admin' => $admin]);
+}
+
+8.	Goto UserNotifications.blade.php
+<div class="card container-fluid" style="width: 18rem;">
+@if (count($admin->notifications) > 0)
+@foreach ($admin->notifications as $val)
+<div class="card-body">
+<p class="card-text">{{ $val->data['data'] }}</p>
+<hr>
+</div>
+@endforeach
+@else
+<p class="card-text">No Notifications</p>
+@endif
+</div>
+
+“REDIS”-->
+Redis, which stands for Remote Dictionary Server, is a fast, open source, in-memory, key-value data store.
+Redis delivers sub-millisecond response times, enabling millions of requests per second for real-time applications in industries like gaming, ad-tech, financial services, healthcare, and IoT.
+All Redis data resides in memory, which enables low latency and high throughput data access. Unlike traditional databases, In-memory data stores don’t require a trip to disk, reducing engine latency to microseconds. Because of this, in-memory data stores can support an order of magnitude more operations and faster response times. The result is blazing-fast performance with average read and write operations taking less than a millisecond and support for millions of operations per second.
+
+Redis Strings->
+keys *			//shows all keys
+set name ankit		//sets a key
+mset num1 50 num2 60	//sets multiple key
+get name		//show key value
+del name		//delete a key
+set name john		//overwrites the key’s value
+flushall		//deletes all key
+setex name 10 max	//sets a key with expiry
+ttl name		//show time to live of a key
+setnx name john	//checks if key already exists, & sets if not exists
+strlen name		//shows length of key
+decr num1 		//decrements a key value, -1
+incr num1 		//increments a key value, +1
+incrby num1 5		//increments key value by 5,  num1 = 55
+decrby num1 4
+append name “ singh”		//append the key, name = john singh
+
+
+
+
+
+Google Auth Login-->
+Laravel Socialite provides an expressive, fluent interface to OAuth authentication with Facebook, Twitter, Google, LinkedIn, GitHub, GitLab and Bitbucket. It handles almost all of the boilerplate social authentication code you are dreading writing.
+
+
+
+
+
+
+
+
+“GENERAL”
+Docker is a software platform that allows you to build, test, and deploy applications quickly. Docker packages software into standardized units called containers that have everything the software needs to run including libraries, system tools, code, and runtime.
+
+
+
+
+
+
+
+abstract, final, and static
+Tell me about yourself
+Tell me about your projects
+Oops concepts
+Types of join in sql
+Difference in joins
+Git vs github
+Git commands
+
+
+
+
+
